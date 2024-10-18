@@ -19,6 +19,12 @@ const Slider = () => {
   useEffect(() => {
     nextCard();
   });
+
+  // Gestion du changement via les boutons radio
+  const handleRadioChange = (radioIdx) => {
+    setIndex(radioIdx);
+  };
+  
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
@@ -46,6 +52,7 @@ const Slider = () => {
                   type="radio"
                   name="radio-button"
                   checked={idx === radioIdx}
+                   onChange={() => handleRadioChange(radioIdx)} // Utilisation de onChange pour changer de page
                 />
               ))}
             </div>
