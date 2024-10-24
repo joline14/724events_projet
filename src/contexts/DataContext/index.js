@@ -39,13 +39,11 @@ export const DataProvider = ({ children }) => {
 
    // Mettre à jour `last` lorsque les données sont récupérées
    useEffect(() => {
-    if (data && data.focus) {
-      const recentEvent = data.focus.sort(
-        (a, b) => new Date(b.date) - new Date(a.date)
-      )[0];
-      setLast(recentEvent); // Stocker le dernier événement
+    if (data && data.events) {
+      setLast(data.events.sort((evtA, evtB) => new Date(evtB.date) - new Date(evtA.date)
+      )[0])
     }
-  }, [data]);
+  }, [data])
   
   return (
     <DataContext.Provider
